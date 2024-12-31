@@ -1,3 +1,3 @@
 # Next.js Starter
 
-A basic Next.js starter with sensible defaults for eslint, prettier, typescript and vscode settings.
+A basic Next.js starter with Shadcn UI & Dark Mode.
