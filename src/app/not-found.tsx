@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <div className="h-screen w-screen">
       <div className="flex h-full w-full items-center justify-center">
-        <div className="prose dark:prose-invert space-y-4 text-center text-slate-900 dark:text-slate-300">
+        <div className="prose space-y-4 text-center text-slate-900 dark:prose-invert dark:text-slate-300">
           <h1 className="my-0 text-4xl font-extrabold tracking-tight md:text-5xl">
             404
           </h1>
