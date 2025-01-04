@@ -21,8 +21,13 @@ export default function ToggleThemeButton() {
     <Button
       variant={"ghost"}
       onClick={() => (theme === "dark" ? setTheme("light") : setTheme("dark"))}
+      className="p-0 hover:bg-transparent focus:bg-transparent focus-visible:bg-transparent"
     >
-      {theme === "dark" ? <Sun /> : <Moon />}
+      {theme === "dark" ? (
+        <Sun className="size-10" />
+      ) : (
+        <Moon className="size-10" />
+      )}
       <span className="sr-only">Toggle Theme</span>
     </Button>
   );

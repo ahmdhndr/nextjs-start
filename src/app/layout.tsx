@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { Suspense } from "react";
 
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -29,7 +30,9 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="flex h-screen w-screen flex-col justify-between">
             <Navbar />
-            <main className="container flex-1 flex-grow">{children}</main>
+            <main className="container flex-1 flex-grow">
+              <Suspense>{children}</Suspense>
+            </main>
             <footer className="flex h-14 items-center justify-center border-t">
               Next.js Starter @ 2025
             </footer>

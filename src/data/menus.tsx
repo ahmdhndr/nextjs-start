@@ -4,6 +4,10 @@ export const menus: { name: string; href: string }[] = [
     href: "/",
   },
   {
+    name: "Profile",
+    href: "/profile",
+  },
+  {
     name: "Components",
     href: "/components",
   },

@@ -17,7 +17,7 @@ export function ProfileMenu() {
   const { data, status } = useSession();
 
   if (status === "loading") {
-    return <Loader2 className="text-bone-white size-5 animate-spin" />;
+    return <Loader2 className="size-5 animate-spin" />;
   }
 
   if (!data) {
@@ -37,9 +37,7 @@ export function ProfileMenu() {
             src={data?.user?.image as string}
             alt={data?.user?.name as string}
           />
-          <AvatarFallback className="bg-orange-pastel text-bone-white">
-            {avatarFallback}
-          </AvatarFallback>
+          <AvatarFallback>{avatarFallback}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" side="bottom" className="w-60">
@@ -47,7 +45,10 @@ export function ProfileMenu() {
           Signed as <span className="font-semibold">{data?.user?.name}</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer">
+        <DropdownMenuItem
+          onClick={() => signOut({ callbackUrl: "/" })}
+          className="cursor-pointer"
+        >
           <LogOut className="mr-2 size-4" />
           Sign Out
         </DropdownMenuItem>
