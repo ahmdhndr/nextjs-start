@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import { SessionProvider } from "next-auth/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 export function ThemeProvider({
@@ -9,8 +10,10 @@ export function ThemeProvider({
   ...props
 }: React.ComponentProps<typeof NextThemesProvider>) {
   return (
-    <NextThemesProvider {...props} attribute={"class"}>
-      {children}
-    </NextThemesProvider>
+    <SessionProvider>
+      <NextThemesProvider {...props} attribute={"class"}>
+        {children}
+      </NextThemesProvider>
+    </SessionProvider>
   );
 }

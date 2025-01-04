@@ -30,7 +30,7 @@ const eslintConfig = [
       "check-file/folder-naming-convention": [
         "error",
         {
-          "src/**/!(__tests__)": "KEBAB_CASE",
+          "src/**/!(__tests__|^[.*)": "KEBAB_CASE",
         },
       ],
     },

@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -69,6 +70,7 @@ export default function AuthModal({ open, onOpenChange }: AuthModalProps) {
           <Button
             variant={"outline"}
             className="flex items-center justify-center"
+            onClick={() => signIn("google")}
           >
             <svg
               role="img"

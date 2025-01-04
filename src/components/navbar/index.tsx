@@ -5,31 +5,30 @@ import { usePathname } from "next/navigation";
 import React from "react";
 
 import { Menu } from "lucide-react";
+import { useSession } from "next-auth/react";
 
+import AuthModal from "@/components/auth-modal";
+import BrandLogo from "@/components/brand-logo";
+import { Button } from "@/components/ui/button";
+import { menus } from "@/data/menus";
 import { cn } from "@/lib/utils";
 
-import AuthModal from "./auth-modal";
-import BrandLogo from "./brand-logo";
+import NavbarMobile from "./navbar-mobile";
+import { ProfileMenu } from "./profile-dropdown";
 import ToggleThemeButton from "./toggle-theme-button";
-import { Button } from "./ui/button";
-
-const navItems: { name: string; href: string }[] = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Components",
-    href: "/components",
-  },
-];
 
 export function Navbar() {
   const pathname = usePathname();
   const [openAuthModal, setOpenAuthModal] = React.useState(false);
+  const [openMenuMobile, setOpenMenuMobile] = React.useState(false);
+  const session = useSession();
 
   const onClickLogin = () => {
     setOpenAuthModal(true);
+  };
+
+  const onClickMenuMobile = () => {
+    setOpenMenuMobile(true);
   };
 
   return (
@@ -41,7 +40,7 @@ export function Navbar() {
               <BrandLogo />
 
               <nav className="flex items-center gap-4 text-sm xl:gap-6">
-                {navItems.map((item) => (
+                {menus.map((item) => (
                   <Link
                     href={item.href}
                     key={item.name}
@@ -66,6 +65,7 @@ export function Navbar() {
             <Button
               variant={"ghost"}
               className="mr-2 px-0 py-2 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+              onClick={onClickMenuMobile}
             >
               <Menu />
               <span className="sr-only">Toggle Menu</span>
@@ -73,13 +73,16 @@ export function Navbar() {
             {/* <BrandLogo className="md:hidden" /> */}
             <div className="flex flex-1 items-center justify-end gap-2">
               <nav className="flex items-center gap-0.5">
-                <Button
-                  variant={"ghost"}
-                  className="text-muted-foreground"
-                  onClick={onClickLogin}
-                >
-                  Login
-                </Button>
+                {session.status === "authenticated" && <ProfileMenu />}
+                {session.status === "unauthenticated" && (
+                  <Button
+                    variant={"ghost"}
+                    className="text-muted-foreground"
+                    onClick={onClickLogin}
+                  >
+                    Sign In
+                  </Button>
+                )}
                 <ToggleThemeButton />
               </nav>
             </div>
@@ -90,6 +93,11 @@ export function Navbar() {
       <AuthModal
         open={openAuthModal}
         onOpenChange={() => setOpenAuthModal(false)}
+      />
+
+      <NavbarMobile
+        open={openMenuMobile}
+        onOpenChange={() => setOpenMenuMobile(false)}
       />
     </>
   );

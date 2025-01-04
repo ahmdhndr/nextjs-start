@@ -4,9 +4,8 @@ import { useEffect, useState } from "react";
 
 import { Moon, Sun } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import useSystemTheme from "@/hooks/use-system-theme";
-
-import { Button } from "./ui/button";
 
 export default function ToggleThemeButton() {
   const [mounted, setMounted] = useState(false);

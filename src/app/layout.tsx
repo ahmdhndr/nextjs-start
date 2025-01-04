@@ -25,12 +25,15 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/svg+xml" href="/logo.svg" />
       </head>
-      <body
-        className={cn("h-full w-full overflow-hidden", jakartaSans.className)}
-      >
+      <body className={cn("h-full w-full", jakartaSans.className)}>
         <ThemeProvider>
-          <Navbar />
-          <main className="flex h-full w-full flex-col p-4">{children}</main>
+          <div className="flex h-screen w-screen flex-col justify-between">
+            <Navbar />
+            <main className="container flex-1 flex-grow">{children}</main>
+            <footer className="border-grid flex h-14 items-center justify-center border-t">
+              Next.js Starter @ 2025
+            </footer>
+          </div>
         </ThemeProvider>
       </body>
     </html>
