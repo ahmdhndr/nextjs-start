@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier src/ --write",
-    "prepare": "husky",
-    "postinstall": "husky"
+    "prepare": "husky"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -42,7 +41,7 @@
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
       "eslint \"src/**/*.+(ts|js|tsx)\" --fix",
-      "prettier src/ --write"
+      "prettier . --write"
     ]
   },
   "devDependencies": {
