@@ -17,17 +17,17 @@ import { cn } from "@/lib/utils";
 
 interface NavbarMobileProps {
   open: boolean;
-  onOpenChange: () => void;
+  onOpenChangeAction: () => void;
 }
 
 export default function NavbarMobile({
   open,
-  onOpenChange,
+  onOpenChangeAction,
 }: NavbarMobileProps) {
   const pathname = usePathname();
 
   return (
-    <Drawer open={open} onOpenChange={onOpenChange}>
+    <Drawer open={open} onOpenChange={onOpenChangeAction}>
       <DrawerContent>
         <VisuallyHidden.Root>
           <DrawerHeader className="text-left">
@@ -39,7 +39,7 @@ export default function NavbarMobile({
           <div className="container flex flex-col p-2" key={item.name}>
             <Link href={item.href} passHref legacyBehavior>
               <a
-                onClick={() => onOpenChange()}
+                onClick={() => onOpenChangeAction()}
                 href={item.href}
                 className={cn(
                   "font-medium transition-colors hover:text-foreground",

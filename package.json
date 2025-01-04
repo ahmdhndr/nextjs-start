@@ -41,7 +41,7 @@
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
       "eslint \"src/**/*.+(ts|js|tsx)\" --fix",
-      "pnpm format"
+      "prettier src/ --write"
     ]
   },
   "devDependencies": {

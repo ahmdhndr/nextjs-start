@@ -97,7 +97,7 @@ export function Navbar() {
 
       <NavbarMobile
         open={openMenuMobile}
-        onOpenChange={() => setOpenMenuMobile(false)}
+        onOpenChangeAction={() => setOpenMenuMobile(false)}
       />
     </>
   );
