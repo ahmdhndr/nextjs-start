@@ -30,7 +30,7 @@ export default function RootLayout({
           <div className="flex h-screen w-screen flex-col justify-between">
             <Navbar />
             <main className="container flex-1 flex-grow">{children}</main>
-            <footer className="border-grid flex h-14 items-center justify-center border-t">
+            <footer className="flex h-14 items-center justify-center border-t">
               Next.js Starter @ 2025
             </footer>
           </div>

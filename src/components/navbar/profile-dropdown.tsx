@@ -7,6 +7,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -31,7 +32,7 @@ export function ProfileMenu() {
         asChild
         className="relative cursor-pointer outline-none"
       >
-        <Avatar className="size-10 transition hover:opacity-75">
+        <Avatar className="size-8 transition hover:opacity-75">
           <AvatarImage
             src={data?.user?.image as string}
             alt={data?.user?.name as string}
@@ -41,7 +42,11 @@ export function ProfileMenu() {
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="center" side="bottom" className="w-60">
+      <DropdownMenuContent align="end" side="bottom" className="w-60">
+        <DropdownMenuItem className="truncate">
+          Signed as <span className="font-semibold">{data?.user?.name}</span>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer">
           <LogOut className="mr-2 size-4" />
           Sign Out
